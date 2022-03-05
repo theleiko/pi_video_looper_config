@@ -34,12 +34,19 @@ apt install mc -y
 # Install Power Button Script
 cd /home/pi
 git clone https://github.com/Howchoo/pi-power-button.git
-./pi-power-button/script/install
+/home/pi/pi-power-button/script/install
 
 
 # Install pi_video_looper
 git clone https://github.com/adafruit/pi_video_looper
 /home/pi/pi_video_looper/install.sh no_hello_video
+
+
+# Deploy the config for videolooper
+git clone https://github.com/theleiko/pi_video_looper_config
+cp /home/pi/pi_video_looper_config/video_looper.conf /etc/supervisor/conf.d/
+cp /home/pi/pi_video_looper_config/video_looper.ini /boot/
+
 
 # Update the Bootloader
 sudo rpi-eeprom-update -a
